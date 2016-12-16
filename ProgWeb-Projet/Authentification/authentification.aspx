@@ -8,9 +8,12 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form_authentification" runat="server">
     <div>
-    
+        <h2>Se connecter</h2>
+        <p><asp:textbox id="TextBoxNom" runat="server" placeholder="Identifiant" /></p>
+        <p><asp:textbox id="TextBoxPassword" runat="server" placeholder="Mot de passe" /></p>
+		<asp:button ID="Bouton" text="Envoi" runat="server"/>
     </div>
     </form>
 </body>
