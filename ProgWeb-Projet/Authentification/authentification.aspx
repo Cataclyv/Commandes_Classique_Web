@@ -13,7 +13,8 @@
         <h2>Se connecter</h2>
         <p><asp:textbox id="TextBoxNom" runat="server" placeholder="Identifiant" /></p>
         <p><asp:textbox id="TextBoxPassword" runat="server" placeholder="Mot de passe" /></p>
-		<asp:button ID="Bouton" text="Envoi" runat="server"/>
+		<asp:button ID="BoutonConnexion" text="Envoi" runat="server" OnClick="BoutonConnexion_Click"/>
+        <p><asp:Label ID="LabelErreurConnexion" runat="server"></asp:Label></p>
     </div>
     </form>
 </body>
