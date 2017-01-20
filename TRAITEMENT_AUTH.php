@@ -13,22 +13,14 @@ $requete = "SELECT DISTINCT Login, Password, Nom_Abonné, Prénom_Abonné"
 $cmd = $pdo->prepare($requete);
 $cmd->execute();
 
-$check = -1;
-$url = "noaddress";
+$url = "Location : authentification.php";
 
 while ($row = $cmd->fetch()) {
     if ($row["Login"] == $Login && $row["Password"] == $Password) {
-        $check = 0;
         $_SESSION["USER"] = trim($row["Login"]
                 . " [" . $row["Prénom_Abonné"] . " " . $row["Nom_Abonné"] . "]");
+        $url = "Location : index.php";
     } 
-}
-
-if($check == -1) {
-    $url = "Location : authentification.php";
-}
-else {
-    $url = "Location : index.php";
 }
 
 $pdo=null;
