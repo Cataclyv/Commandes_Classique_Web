@@ -12,16 +12,26 @@ $requete = "SELECT DISTINCT Login, Password, Nom_Abonné, Prénom_Abonné"
         . " WHERE Login LIKE '" . $Login . "' and Password LIKE '" . $Password . "';";
 $cmd = $pdo->prepare($requete);
 $cmd->execute();
+
+$check = -1;
+$url = "noaddress";
+
 while ($row = $cmd->fetch()) {
     if ($row["Login"] == $Login && $row["Password"] == $Password) {
-        $_SESSION["USER"] = $row["Login"]
-                . " [" . $row["Prénom_Abonné"] . " " . $row["Nom_Abonné"] . "]";
-        $pdo = null;
-        header("Location : index.php?Login=" . $row["Login"]);
-    } else {
-        $pdo = null;
-        header("Location : authentification.php");
-        echo $cmd;
-    }
+        $check = 0;
+        $_SESSION["USER"] = trim($row["Login"]
+                . " [" . $row["Prénom_Abonné"] . " " . $row["Nom_Abonné"] . "]");
+    } 
 }
+
+if($check == -1) {
+    $url = "Location : authentification.php";
+}
+else {
+    $url = "Location : index.php";
+}
+
+$pdo=null;
+header($url);
+
 ?>

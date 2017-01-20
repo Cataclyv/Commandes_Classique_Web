@@ -10,14 +10,13 @@
     </head>
 
     <body>
-        <?php 
-        include 'navbar.php';
-        ?>   
+        <?php include 'navbar.php'; ?>   
         <form method="post" action="TRAITEMENT_AUTH.php">
             <p>Login : <input name="Login" type="text" placeholder="Leeroy" /></p>
             <p>Password : <input name="Password" type="password" placeholder="Jenkins" /></p>
             <input name="Connexion" type="submit" value="Se connecter" />
         </form>
+        <p>Pas de compte ? <a href="inscription.php">S'inscrire ici</a></p>
     </body>
 </html>
 
