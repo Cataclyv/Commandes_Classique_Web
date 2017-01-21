@@ -18,12 +18,12 @@ $url = "Location : authentification.php";
 while ($row = $cmd->fetch()) {
     if ($row["Login"] == $Login && $row["Password"] == $Password) {
         $_SESSION["USER"] = trim($row["Login"]
-                . " [" . $row["Prénom_Abonné"] . " " . $row["Nom_Abonné"] . "]");
+                . " [" . $row[utf8_decode('Prénom_Abonné')] . " "
+                . $row[utf8_decode('Nom_Abonné')] . "]");
         $url = "Location : index.php";
-    } 
+    }
 }
 
-$pdo=null;
+$pdo = null;
 header($url);
-
 ?>

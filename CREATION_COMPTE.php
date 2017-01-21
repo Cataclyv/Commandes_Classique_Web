@@ -12,13 +12,6 @@ $requete = "INSERT INTO Abonné(Nom_Abonné, Prénom_Abonné, Login, Password)"
 $cmd = $pdo->prepare($requete);
 
 if ($Login != NULL && $Password == NULL) {
-    if ($Nom == NULL) {
-        $Nom = "";
-    }
-    if ($Prenom == NULL) {
-        $Prenom = "";
-    }
-
     $cmd->execute(array('nom' => $Nom,
         'prenom' => $Prenom,
         'login' => $Login,
@@ -38,7 +31,8 @@ $url = "Location : inscription.php";
 while($row = $cmd->fetch()) {
     if($row["Login"] == $Login && $row["Password"] == $Password) {
         $_SESSION["USER"] = trim($row["Login"]
-                . " [" . $row["Prénom_Abonné"] . " " . $row["Nom_Abonné"] . "]");
+                . " [" . $row[utf8_decode('Prénom_Musicien')] . " " 
+                . $row[utf8_decode('Prénom_Musicien')] . "]");
         $url = "Location : index.php";
     }
 }

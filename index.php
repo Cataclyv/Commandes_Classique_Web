@@ -14,7 +14,6 @@
         include 'navbar.php';
         if(isset($_SESSION["USER"]))
         {
-            echo "<p>Bonjour, " . $_SESSION["USER"] . "</p>";
             echo '<p><a href="catalogue.php">ACHETER</a></p>';
         }
         else
